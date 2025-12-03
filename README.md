@@ -201,10 +201,10 @@ To perform actual scans:
 2. Scan Docker images:
    ```bash
    # Scan backend image
-   trivy image YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sample-backend:latest
+   trivy image 815539056618.dkr.ecr.eu-north-1.amazonaws.com/sample-backend:latest
    
    # Scan frontend image
-   trivy image YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sample-frontend:latest
+   trivy image 815539056618.dkr.ecr.eu-north-1.amazonaws.com/sample-frontend:latest
    ```
 
 ## 🧪 QA Testing

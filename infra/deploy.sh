@@ -22,7 +22,7 @@ fi
 
 # Authenticate with ECR
 echo "Authenticating with ECR..."
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 815539056618.dkr.ecr.eu-north-1.amazonaws.com
 
 # Pull latest images
 echo "Pulling latest Docker images..."

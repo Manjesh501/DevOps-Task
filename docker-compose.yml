@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    image: YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sample-backend:latest
+    image: 815539056618.dkr.ecr.eu-north-1.amazonaws.com/sample-backend:latest
     container_name: sample-backend
     ports:
       - "5000:5000"
@@ -10,7 +10,7 @@ services:
       - app-network
 
   frontend:
-    image: YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sample-frontend:latest
+    image: 815539056618.dkr.ecr.eu-north-1.amazonaws.com/sample-frontend:latest
     container_name: sample-frontend
     ports:
       - "80:80"
