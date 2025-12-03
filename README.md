@@ -1,6 +1,6 @@
 # DevOps Sample Repository
 
-A complete, production-ready DevOps pipeline with backend, frontend, CI/CD, monitoring, and security components.
+A complete, production-ready DevOps pipeline with backend, frontend, CI/CD, monitoring, security, and development tooling components. Includes a Makefile for streamlined development workflows.
 
 ## 🏗️ Architecture Diagram
 
@@ -38,8 +38,9 @@ graph TD
 │   ├── docker-compose.yml  # Monitoring services
 │   └── prometheus.yml      # Prometheus configuration
 ├── security/
-│   ├── backend_scan.txt    # Trivy scan report placeholder
-│   └── frontend_scan.txt   # Trivy scan report placeholder
+│   ├── backend_scan.txt    # Trivy scan report 
+│   ├── frontend_scan.txt   # Trivy scan report 
+│   └── scan_report.txt     # Combined security scan report
 ├── qa/
 │   ├── test_api.py         # API testing script
 │   └── test_deploy.sh      # Deployment validation
@@ -47,9 +48,13 @@ graph TD
 ├── .github/workflows/
 │   └── ci.yml              # CI/CD pipeline
 ├── docker-compose.yml      # Main docker-compose
+├── docker-compose.dev.yml  # Development docker-compose
 ├── docker-compose.override.yml  # Override configuration
-└── nginx/
-    └── default.conf        # Reverse proxy configuration
+├── nginx/
+│   └── default.conf        # Reverse proxy configuration
+├── Makefile                # Development commands automation
+├
+└── .env.example            # Environment variables template
 ```
 
 ## 🚀 Quick Start
@@ -69,6 +74,26 @@ graph TD
    - Frontend: http://localhost:8080
    - Backend API: http://localhost:8080/api/status
    - Backend Health: http://localhost:8080/health
+
+## 🛠️ Development Commands
+
+The project includes a Makefile with common development commands:
+
+```bash
+make dev        # Start development environment
+make build      # Build Docker images
+make test       # Run all tests
+make deploy     # Deploy to EC2
+make scan       # Run security scans
+make clean      # Clean up containers
+make help       # Show all commands
+```
+
+For Windows users, you can run equivalent commands directly:
+```bash
+docker-compose -f docker-compose.dev.yml up --build  # Start development
+# Run tests manually as described in the Testing section
+```
 
 ## 🧪 Running Tests
 
@@ -98,6 +123,8 @@ The CI/CD pipeline is configured in `.github/workflows/ci.yml` and includes:
    - Builds Docker images for backend and frontend
    - Pushes images to AWS ECR
    - Uses GitHub Secrets for authentication
+
+The same tests and build processes can be run locally using the Makefile commands.
 
 ### Required GitHub Secrets:
 - `AWS_ACCESS_KEY_ID`: Your AWS access key ID
@@ -167,7 +194,7 @@ The monitoring stack includes Prometheus, Grafana, and Node Exporter.
 ### Running Monitoring Services
 ```bash
 cd monitoring
-docker-compose -f docker-compose.dev.yml up -d
+docker-compose up -d
 ```
 
 ### Accessing Monitoring Tools
@@ -181,12 +208,12 @@ docker-compose -f docker-compose.dev.yml up -d
 
 ## 🔒 Security Scanning with Trivy
 
-Trivy scan reports are included as placeholders in the [security](security/) directory:
+Trivy scan reports are included in the [security](security/) directory. These are real scan results from actual container images:
 
 - [Backend Scan Report](security/backend_scan.txt)
 - [Frontend Scan Report](security/frontend_scan.txt)
 
-To perform actual scans:
+To perform fresh scans on updated images:
 
 1. Install Trivy:
    ```bash
@@ -207,6 +234,11 @@ To perform actual scans:
    trivy image 815539056618.dkr.ecr.eu-north-1.amazonaws.com/sample-frontend:latest
    ```
 
+Alternatively, use the Makefile command:
+```bash
+make scan
+```
+
 ## 🧪 QA Testing
 
 ### API Testing
@@ -223,6 +255,11 @@ pip install requests
 python test_api.py
 ```
 
+Alternatively, use the Makefile command:
+```bash
+make test
+```
+
 ### Deployment Validation
 The [qa/test_deploy.sh](qa/test_deploy.sh) script validates deployment:
 - Checks container status
@@ -235,6 +272,8 @@ Run the validation:
 cd qa
 ./test_deploy.sh
 ```
+
+This is also run as part of `make test`.
 
 ## 🖼️ Screenshots
 
@@ -263,6 +302,7 @@ cd qa
 - **Monitoring**: Prometheus, Grafana, Node Exporter
 - **Security**: Trivy vulnerability scanner
 - **Infrastructure**: AWS EC2
+
 
 ## 📄 License
 

@@ -6,6 +6,7 @@ yarn-error.log*
 COMPLETE_DEPLOYMENT_GUIDE.md
 ECR_DEPLOYMENT_SUMMARY.md
 DEPLOYMENT_STEPS.md
+detailed.md
 # Production
 build
 dist
