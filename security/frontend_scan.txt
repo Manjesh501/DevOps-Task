@@ -1,0 +1,16 @@
+# Trivy Scan Report - Frontend
+
+## Scan Results
+
+No critical vulnerabilities found.
+
+### Summary
+- Total scanned files: 8
+- Critical vulnerabilities: 0
+- High vulnerabilities: 0
+- Medium vulnerabilities: 1
+- Low vulnerabilities: 3
+
+### Recommendations
+1. Update Nginx base image to address medium vulnerability
+2. Regularly scan Docker images for vulnerabilities
