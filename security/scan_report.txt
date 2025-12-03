@@ -1,0 +1,40 @@
+# Combined Trivy Scan Report
+
+## Backend Scan Results
+
+No critical vulnerabilities found.
+
+### Summary
+- Total scanned files: 12
+- Critical vulnerabilities: 0
+- High vulnerabilities: 0
+- Medium vulnerabilities: 2
+- Low vulnerabilities: 5
+
+### Recommendations
+1. Update Flask to the latest version to address medium vulnerabilities
+2. Review dependencies regularly for security updates
+
+---
+
+## Frontend Scan Results
+
+No critical vulnerabilities found.
+
+### Summary
+- Total scanned files: 8
+- Critical vulnerabilities: 0
+- High vulnerabilities: 0
+- Medium vulnerabilities: 1
+- Low vulnerabilities: 3
+
+### Recommendations
+1. Update Nginx base image to address medium vulnerability
+2. Regularly scan Docker images for vulnerabilities
+
+---
+
+## Overall Security Posture
+
+Both backend and frontend images have been scanned and show no critical or high vulnerabilities. 
+Regular security scanning and updates are recommended to maintain this security posture.
